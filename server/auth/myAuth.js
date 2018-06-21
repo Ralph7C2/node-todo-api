@@ -5,7 +5,7 @@ module.exports = function(req, res, next) {
 		if(!req.headers.authorization) {
 			return res.status(403).json({success: false, msg: 'No authorization header'});
 		}
-		req.user = jwt.decode(req.headers.authorization.slice(7), 'DisMyKey');
+		req.user = jwt.decode(req.headers.authorization.slice(7), process.env.jwtKey);
 		next();
 	} catch(err) {
 		res.status(403).json({success: false, msg: 'Malformed token'});

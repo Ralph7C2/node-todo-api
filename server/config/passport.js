@@ -4,7 +4,7 @@ var {User} = require('./../models/user');
 
 module.exports = function(passport) {
 	var opts = {
-		secretOrKey: 'DisMyKey', //Move to config
+		secretOrKey: process.env.jwtKey, //Move to config
 		jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 	};
 	passport.use(new Strategy(opts, function(jwt_payload, done) {

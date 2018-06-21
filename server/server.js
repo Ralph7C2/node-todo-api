@@ -1,3 +1,4 @@
+require('dotenv').load();
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
@@ -51,7 +52,7 @@ app.post('/authenticate', (req, res) => {
 		} else {
 			user.comparePassword(req.body.password, (err, isMatch) => {
 				if(isMatch && !err) {
-					var token = jwt.encode(user, 'DisMyKey');
+					var token = jwt.encode(user, process.env.jwtKey);
 					res.json({success: true, token: token});
 				} else {
 					res.json({success: false, msg: 'Authentication failed'});
