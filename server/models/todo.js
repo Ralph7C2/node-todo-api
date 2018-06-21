@@ -6,7 +6,11 @@ var Todo = mongoose.model('Todo', {
 		required: true,
 		minlength: 1,
 		trim: true
-	}, 
+	},
+	userId: {
+		type: String,
+		required: true
+	},
 	completed: {
 		type: Boolean,
 		default: false
