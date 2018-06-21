@@ -19,9 +19,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(morgan('dev'));
 
-app.use((req, res, next) => {
-	console.log(req.socket);
-});
+console.log(process.env.jwtKey);
 
 app.post('/signup', (req, res) => {
 	if(!req.body.name || ! req.body.password) {
